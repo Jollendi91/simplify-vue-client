@@ -1,7 +1,7 @@
 <template>
   <div>
       <app-header></app-header>
-      <router-view></router-view>
+      <router-view class="router-view"></router-view>
   </div>
 </template>
 
@@ -17,5 +17,7 @@
 
 
 <style>
-
+  .router-view {
+    padding-top: 100px;
+  }
 </style>

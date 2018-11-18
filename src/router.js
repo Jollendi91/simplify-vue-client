@@ -11,11 +11,11 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {path: '/', component: LandingPage},
-    {path: '/account-setup', component: AccountSetup},
-    {path: '/dashboard', component: Dashboard},
-    {path: '/category/:id', component: Category },
-    {path: '/bills', component: Bills},
-    {path: '/edit-profile', component: EditProfile}
+    { path: '/', component: LandingPage },
+    { path: '/account-setup', component: AccountSetup },
+    { path: '/dashboard', component: Dashboard },
+    { path: '/category/:id', component: Category },
+    { path: '/bills', component: Bills },
+    { path: '/edit-profile', component: EditProfile }
   ]
 });
