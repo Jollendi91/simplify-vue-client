@@ -1,22 +1,40 @@
 <template>
-    <nav class="app-navigation">
-        <div class="navbar desktop-nav">
-            <h1 class="logo-container"><font-awesome-icon icon="dollar-sign" class="logo">S</font-awesome-icon>implify</h1>
-            <nav-buttons></nav-buttons>
-        </div>
-        <div class="navbar mobile-nav">
-            <h1 class="logo-container"><font-awesome-icon icon="dollar-sign" class="logo">S</font-awesome-icon>implify</h1>
-            <div>X</div>
-        </div>
-        <nav-buttons class="mobile-links"></nav-buttons>
-    </nav>
+    <div>
+        <component v-if="displayForm" :is="currentForm"></component>
+       <nav class="app-navigation">
+            <div class="navbar desktop-nav">
+                <h1 class="logo-container"><font-awesome-icon icon="dollar-sign" class="logo">S</font-awesome-icon>implify</h1>
+                <nav-buttons :setForm="setViewForm"></nav-buttons>
+            </div>
+            <div class="navbar mobile-nav">
+                <h1 class="logo-container"><font-awesome-icon icon="dollar-sign" class="logo">S</font-awesome-icon>implify</h1>
+                <div>X</div>
+            </div>
+            <nav-buttons class="mobile-links"></nav-buttons>
+        </nav> 
+    </div>
 </template>
 
 <script>
     import Buttons from './Buttons.vue';
+    import LoginForm from '../forms/LoginForm.vue';
+
     export default {
+        data() {
+            return {
+                displayForm: false,
+                currentForm: 'nav-buttons'
+            }
+        },
+        methods: {
+            setViewForm(form) {
+                this.currentForm = form;
+                this.displayForm = true;
+            }
+        },
         components: {
-            navButtons: Buttons
+            navButtons: Buttons,
+            appLoginForm: LoginForm
         }
     }
 </script>

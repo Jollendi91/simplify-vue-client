@@ -7,7 +7,7 @@
             <li class="signup">
                <p class="link">Sign up</p>
             </li>
-            <li class="login">
+            <li class="login" @click="setForm('app-login-form')">
                <p class="link">Login</p>
             </li>
         </ul>
@@ -35,9 +35,11 @@
 </template>
 
 <script>
-export default {
-
-}
+    export default {
+        props: {
+            setForm: Function
+        }
+    }
 </script>
 
 <style scoped lang="scss">
