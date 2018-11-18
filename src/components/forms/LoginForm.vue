@@ -1,38 +1,35 @@
 <template>
-    <div class="form-modal">
-        <div class="overlay" @click="toggleForm()"></div>
-        <article class="form-container">
-            <font-awesome-icon class="close-btn" icon="times" @click="toggleForm()"/>
-            <form class="login-form">
-                <header class="header-container">
-                    <h2>Let's get logged in!</h2>
-                </header>
-                <div class="horizontal-inputs">
-                    <div class="form-input-container">
-                        <label class="login-username">Username</label>
-                        <input 
-                            type="text"
-                            name="username"
-                            id="login-username"
-                            ariaLabel="Login Username"
-                        />
-                    </div>
-                    <div class="form-input-container">
-                        <label class="login-password">Password</label>
-                        <input 
-                            type="password"
-                            name="password"
-                            id="login-password"
-                            ariaLabel="Login password"
-                        />
-                    </div>
+    <article class="form-container">
+        <font-awesome-icon class="close-btn" icon="times" @click="toggleForm()"/>
+        <form class="login-form">
+            <header class="header-container">
+                <h2>Let's get logged in!</h2>
+            </header>
+            <div class="horizontal-inputs">
+                <div class="form-input-container">
+                    <label class="login-username">Username</label>
+                    <input 
+                        type="text"
+                        name="username"
+                        id="login-username"
+                        ariaLabel="Login Username"
+                    />
                 </div>
-                <div class="button-container">
-                <button>Login</button>
+                <div class="form-input-container">
+                    <label class="login-password">Password</label>
+                    <input 
+                        type="password"
+                        name="password"
+                        id="login-password"
+                        ariaLabel="Login password"
+                    />
                 </div>
-            </form>
-        </article>
-    </div>
+            </div>
+            <div class="button-container">
+            <button>Login</button>
+            </div>
+        </form>
+    </article>
 </template>
 
 <script>
@@ -44,29 +41,6 @@
 </script>
 
 <style scoped lang="scss">
-    .form-modal {
-      position: absolute;
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .overlay {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            z-index: 1;
-        }
-
-        article {
-            background-color: white;
-            z-index: 1;
-            margin: 0 10px;
-        } 
-    }
-
     .form-container {
         width: 100%;
         max-width: 600px;
@@ -123,5 +97,6 @@
         border-radius: 5px;
         color: #276A73;
         font-weight: bold;
+        cursor: pointer;
     }
 </style>

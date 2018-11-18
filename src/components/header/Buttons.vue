@@ -4,7 +4,7 @@
             <li class="demo-account">
                <p class="link">Demo Account</p> 
             </li>
-            <li class="signup">
+            <li class="signup" @click="setForm('app-signup-form')">
                <p class="link">Sign up</p>
             </li>
             <li class="login" @click="setForm('app-login-form')">

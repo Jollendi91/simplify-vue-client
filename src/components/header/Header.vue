@@ -1,10 +1,13 @@
 <template>
     <div>
-        <component v-if="displayForm" :is="currentForm" :toggleForm="toggleForm"></component>
+        <div class="form-modal" v-if="displayForm">
+            <div class="overlay" @click="toggleForm()"></div>
+            <component :is="currentForm" :toggleForm="toggleForm"></component>
+        </div>
        <nav class="app-navigation">
             <div class="navbar desktop-nav">
                 <h1 class="logo-container"><font-awesome-icon icon="dollar-sign" class="logo">S</font-awesome-icon>implify</h1>
-                <nav-buttons :setForm="setViewForm"></nav-buttons>
+                <nav-buttons :setForm="setForm"></nav-buttons>
             </div>
             <div class="navbar mobile-nav">
                 <h1 class="logo-container"><font-awesome-icon icon="dollar-sign" class="logo">S</font-awesome-icon>implify</h1>
@@ -18,6 +21,7 @@
 <script>
     import Buttons from './Buttons.vue';
     import LoginForm from '../forms/LoginForm.vue';
+    import SignupForm from '../forms/SignupForm.vue';
 
     export default {
         data() {
@@ -27,7 +31,7 @@
             }
         },
         methods: {
-            setViewForm(form) {
+            setForm(form) {
                 this.currentForm = form;
                 this.displayForm = !this.displayForm;
             },
@@ -37,12 +41,36 @@
         },
         components: {
             navButtons: Buttons,
-            appLoginForm: LoginForm
+            appLoginForm: LoginForm,
+            appSignupForm: SignupForm
         }
     }
 </script>
 
 <style scoped lang="scss">
+     .form-modal {
+      position: absolute;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        article {
+            background-color: white;
+            z-index: 1;
+            margin: 0 10px;
+        } 
+    }
+
     .app-navigation {
         position: fixed;
         left: 0;
