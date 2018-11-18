@@ -86,7 +86,7 @@ export default {
             .link {
                 text-align: center;
                 border-top: 0;
-                padding: 20px 10px;
+                padding: 0 10px;
                 min-width: 75px;
                 width: auto;
             }

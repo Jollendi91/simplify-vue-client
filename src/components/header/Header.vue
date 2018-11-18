@@ -1,11 +1,11 @@
 <template>
     <nav class="app-navigation">
         <div class="navbar desktop-nav">
-            <h1 class="logo-container"><span class="logo">S</span>implify</h1>
+            <h1 class="logo-container"><font-awesome-icon icon="dollar-sign" class="logo">S</font-awesome-icon>implify</h1>
             <nav-buttons></nav-buttons>
         </div>
         <div class="navbar mobile-nav">
-            <h1 class="logo-container"><span class="logo">S</span>implify</h1>
+            <h1 class="logo-container"><font-awesome-icon icon="dollar-sign" class="logo">S</font-awesome-icon>implify</h1>
             <div>X</div>
         </div>
         <nav-buttons class="mobile-links"></nav-buttons>
