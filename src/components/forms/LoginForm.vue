@@ -1,8 +1,8 @@
 <template>
     <div class="form-modal">
-        <div class="overlay"></div>
+        <div class="overlay" @click="toggleForm()"></div>
         <article class="form-container">
-            <font-awesome-icon class="close-btn" icon="times"/>
+            <font-awesome-icon class="close-btn" icon="times" @click="toggleForm()"/>
             <form class="login-form">
                 <header class="header-container">
                     <h2>Let's get logged in!</h2>
@@ -36,9 +36,11 @@
 </template>
 
 <script>
-export default {
-
-}
+    export default {
+        props: {
+            toggleForm: Function
+        }
+    }
 </script>
 
 <style scoped lang="scss">

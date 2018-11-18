@@ -1,6 +1,6 @@
 <template>
     <div>
-        <component v-if="displayForm" :is="currentForm"></component>
+        <component v-if="displayForm" :is="currentForm" :toggleForm="toggleForm"></component>
        <nav class="app-navigation">
             <div class="navbar desktop-nav">
                 <h1 class="logo-container"><font-awesome-icon icon="dollar-sign" class="logo">S</font-awesome-icon>implify</h1>
@@ -29,7 +29,10 @@
         methods: {
             setViewForm(form) {
                 this.currentForm = form;
-                this.displayForm = true;
+                this.displayForm = !this.displayForm;
+            },
+            toggleForm() {
+                this.displayForm = !this.displayForm;
             }
         },
         components: {
