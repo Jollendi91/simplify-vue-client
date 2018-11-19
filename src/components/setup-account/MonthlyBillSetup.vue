@@ -1,7 +1,7 @@
 <template>
     <section class="bill-form-container">
         <p class="description">Enter all recurring monthly bills and expenses</p>
-        <MonthlyBillsForm />
+        <bill-form></bill-form>
         <table>
             <thead>
                 <tr>
@@ -10,12 +10,12 @@
                 </tr>
             </thead>
             <tbody>
-               
+               <bill-row v-for="bill in bills" :bill="bill" :key="bill.id"></bill-row>
             </tbody>
             <tfoot>
                 <tr>
                     <th>Total</th>
-                    <th colSpan="2"></th>
+                    <th colSpan="2">{{ billsTotal.toFixed(2) }}</th>
                 </tr>
             </tfoot>
         </table>
@@ -23,8 +23,24 @@
 </template>
 
 <script>
-    export default {
+    import BillForm from './BillForm.vue';
+    import BillRow from './BillRow.vue';
 
+    export default {
+        computed: {
+            bills() {
+                return this.$store.state.user.bills;
+            },
+            billsTotal() {
+              return  this.bills.reduce((total, currentBill) => {
+                    return total + parseFloat(currentBill.amount)
+                  }, 0);
+            }
+        },
+        components: {
+            BillForm,
+            BillRow
+        }
     }
 </script>
 
