@@ -125,6 +125,7 @@
         padding: .2em 4em;
         font-size: 1em;
         margin: .75em 5px 0;
+        background-color: white;
         border: 2px solid #276A73;
         color: #276A73;
         font-weight: bold;
