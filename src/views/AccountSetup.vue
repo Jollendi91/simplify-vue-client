@@ -1,6 +1,6 @@
 <template>
     <article class="setup-step">
-        <h1>Account Setup - Salary</h1>
+        <h1>Account Setup - {{ currentModule }}</h1>
         <component :is="currentStep"></component>
         <div class="btn-container">
             <button 
@@ -21,23 +21,28 @@
 <script>
     import MonthlyPaySetup from '../components/setup-account/MonthlyPaySetup.vue';
     import MonthlyBillSetup from '../components/setup-account/MonthlyBillSetup.vue';
+    import CategorySetup from '../components/setup-account/CategorySetup.vue';
 
     export default {
         data() {
             return {
                 setupStep: 1,
+                currentModule: 'Salary'
             }
         },
         computed: {
             currentStep() {
                 if (this.setupStep === 1) {
+                    this.currentModule = 'Salary';
                     return 'pay-setup';
                 } else if (this.setupStep === 2) {
+                    this.currentModule = 'Bills';
                     return 'bill-setup';
                 } else if (this.setupStep === 3) {
+                    this.currentModule = 'Budgets';
                     return 'budget-setup';
                 }
-            }
+            },
         },
         methods: {
             updateStep(step) {
@@ -46,7 +51,8 @@
         },
         components: {
             paySetup: MonthlyPaySetup,
-            billSetup: MonthlyBillSetup
+            billSetup: MonthlyBillSetup,
+            budgetSetup: CategorySetup
         }
     }
 </script>
@@ -122,6 +128,7 @@
     }
 
     /deep/ table {
+        table-layout: fixed;
         width: 100%;
         border-collapse: collapse;
         margin: 10px 0;
@@ -132,7 +139,6 @@
             border-bottom: 1px solid #ccc;
             text-align: left;
             padding: 4px 12px;
-            width: 33%;
         }
 
         tr:nth-child(even) {

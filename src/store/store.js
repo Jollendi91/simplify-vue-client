@@ -8,7 +8,7 @@ export default new Vuex.Store({
     user: {
       id: 1,
       setupStep: 1,
-      monthlySalary: '10000',
+      monthlySalary: 10000,
       bills: [
         {
           id: 1,

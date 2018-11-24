@@ -2,7 +2,7 @@
     <tr>
         <template>
             <td>{{ bill.bill }}</td>
-            <td>{{parseFloat(bill.amount).toFixed(2)}}</td>
+            <td>{{ parseFloat(bill.amount).toFixed(2) }}</td>
             <td class="edit-buttons">
                 <button aria-label="edit bill" class="icon-btn edit-button">
                     <font-awesome-icon class="fa" :icon="['far', 'edit']" style='color: #4ABDAC;'/>
@@ -27,17 +27,9 @@
         border-bottom: 1px solid #ccc;
         text-align: left;
         padding: 4px 12px;
-        width: 33%;
+        width: 24%;
         font-weight: normal;
         padding: 6px 10px;
-
-        &.percentage {
-            width: 20%;
-        }
-
-        &.edit-buttons {
-            width: 20%;
-        }
     }
 
     button.icon-btn {
@@ -50,5 +42,9 @@
         margin: 0 8px;
         cursor: pointer;
         font-size: 1.1em;
+    }
+
+    .edit-buttons {
+        text-align: center;
     }
 </style>

@@ -6,7 +6,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th colSpan="2">Amount</th>
+                    <th colspan="2">Amount</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,5 +47,9 @@
 <style scoped lang="scss">
     .bill-form-container {
         flex-grow: 1;
+    }
+
+    th {
+        min-width: 33%;
     }
 </style>
