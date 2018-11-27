@@ -3,6 +3,7 @@
         <p class="description">Set up some budgets that you would like to track, such as spending, savings, or debts.</p>
         <div class="progress-container">
             <p class="amount-remaining">${{ remainingAmount.toFixed(2)}} Left</p>
+            <progress-bar :progress="progress" :info="{salary, billsTotal, budgetsTotal}"></progress-bar>
             <!-- <Bar
                 progress={props.categoriesTotal.toFixed(2) / (props.monthlySalary - props.billsTotal.toFixed(2))}
                 text={`$${props.categoriesTotal.toFixed()} of $${(props.monthlySalary - props.billsTotal).toFixed(2)}`}
@@ -38,6 +39,7 @@
 <script>
     import CategoryForm from './CategoryForm.vue';
     import CategoryRow from './CatRow.vue';
+    import ProgressBar from '../ProgressBar.vue';
 
     export default {
         computed: {
@@ -59,11 +61,15 @@
             },
             remainingAmount() {
                 return (this.salary - this.billsTotal) - this.budgetsTotal;
+            },
+            progress() {
+                return parseFloat((this.budgetsTotal / (this.salary - this.billsTotal) * 100).toFixed(2));
             }
         },
         components: {
             CategoryForm,
-            CategoryRow
+            CategoryRow,
+            ProgressBar
         }
     }
 </script>
