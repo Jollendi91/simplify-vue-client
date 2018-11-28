@@ -36,6 +36,7 @@
     .bar-text {
         margin: 0;
         line-height: 30px;
+        font-weight: bold;
         position:absolute;
         top: 50%;
         left: 50%;
