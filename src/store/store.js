@@ -34,6 +34,19 @@ export default new Vuex.Store({
               amount: "50.00"
             }
           ]
+        },
+        {
+          id: 5,
+          category: "Gas",
+          amount: "100.00",
+          transactions: [
+            {
+              id: 45,
+              transaction: "Philips",
+              date: "2018-11-18",
+              amount: "25.00"
+            }
+          ]
         }
       ]
     },

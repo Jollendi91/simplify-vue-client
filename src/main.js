@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store/store';
 import './registerServiceWorker';
+import VueGoogleCharts from 'vue-google-charts';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBars, faTimes, faAngleRight, faAngleLeft, faCaretLeft, faSpinner, faDollarSign, faChevronDown, faMoneyBillWave, faChartLine, faCalculator } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 library.add(faBars, faTimes, faAngleRight, faAngleLeft, faCaretLeft, faSpinner, faDollarSign, faChevronDown, faMoneyBillWave, faChartLine, faCalculator, faEdit, faTrashAlt, faSave);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.use(VueGoogleCharts);
 
 Vue.config.productionTip = false;
 

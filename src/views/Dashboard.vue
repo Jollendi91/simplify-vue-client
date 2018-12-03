@@ -4,6 +4,21 @@
             <section class="dash-card">
                 <h2>Summary</h2>
                 <section class="portfolio-data">
+                    <GChart
+                        type="PieChart"
+                        :data="[
+                            ['Name','Amount'],
+                            ...this.budgets
+                        ]"
+                        :options="{
+                            title: 'Pie Chart',
+                            pieHole: 0.4,
+                            height: chartSize,
+                            chartArea: {
+                                width: '100%'
+                            }
+                        }"
+                        />  
                     <!-- <StyledPieChart
                         data={data} 
                         clickHandler={
@@ -34,11 +49,30 @@
 </template>
 
 <script>
+    import { GChart } from 'vue-google-charts';
+
     export default {
         data() {
             return {
                 router: this.$route.path
             }
+        },
+        computed: {
+            budgets() {
+               return this.$store.state.user.categories.map(budget => ([budget.category, parseFloat(budget.amount)]))
+            },
+            chartSize() {
+                if (window.innerWidth - 100 > 700) {
+                    return 350;
+                } else if (window.innerWidth - 100 > 200) {
+                    return (window.innerWidth - 100) / 2;
+                } else {
+                    return 100;
+                }
+            }
+        },
+        components: {
+            GChart
         }
     }
 </script>
@@ -74,9 +108,7 @@
     }
 
     .portfolio-data {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 15px;
+        width: 100%;
+        padding: 20px;
     }
 </style>
