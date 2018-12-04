@@ -3,15 +3,9 @@
         <p class="description">Set up some budgets that you would like to track, such as spending, savings, or debts.</p>
         <div class="progress-container">
             <p class="amount-remaining">${{ remainingAmount.toFixed(2)}} Left</p>
-            <progress-bar :progress="progress" :info="{salary, billsTotal, budgetsTotal}"></progress-bar>
-            <!-- <Bar
-                progress={props.categoriesTotal.toFixed(2) / (props.monthlySalary - props.billsTotal.toFixed(2))}
-                text={`$${props.categoriesTotal.toFixed()} of $${(props.monthlySalary - props.billsTotal).toFixed(2)}`}
-                options={options}
-                initialAnimate={true}
-                containerStyle={containerStyle}
-                containerClassName={'.progressbar'}
-            /> -->
+            <progress-bar :progress="progress" :info="{
+                total: budgetsTotal,
+                remainingTotal: salary - billsTotal}"></progress-bar>
         </div>
         <category-form :max="remainingAmount.toFixed(2)"></category-form>
         <table>
