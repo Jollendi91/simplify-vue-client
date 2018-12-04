@@ -4,7 +4,7 @@
             <section class="dash-card">
                 <h2>Summary</h2>
                 <section class="portfolio-data">
-                    <pie-chart :chartData="chartData" ></pie-chart>
+                    <pie-chart :chartData="chartData" :options="chartOptions"></pie-chart>
                     <!-- <StyledPieChart
                         data={data} 
                         clickHandler={
@@ -40,7 +40,33 @@
     export default {
         data() {
             return {
-                router: this.$route.path
+                router: this.$route.path,
+                chartOptions: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            boxWidth: 30,
+                            fontSize: 16,
+                            fontFamily: 'Cabin'
+                        },
+                        onClick: function(e, legendItem) {
+                            return
+                        }
+                    },
+                    tooltips: {
+                        bodyFontSize: 14,
+                        callbacks: {
+                            label: function(tooltipItem, data) {
+                                let label = `${data.labels[tooltipItem.index]} - $${parseFloat(data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index]).toFixed(2)}`;
+
+                                return label;
+                            }
+                        }
+                    },
+                    layout: {
+                        padding: 20
+                    }
+                }
             }
         },
         computed: {
