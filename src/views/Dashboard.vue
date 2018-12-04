@@ -4,21 +4,7 @@
             <section class="dash-card">
                 <h2>Summary</h2>
                 <section class="portfolio-data">
-                    <GChart
-                        type="PieChart"
-                        :data="[
-                            ['Name','Amount'],
-                            ...this.budgets
-                        ]"
-                        :options="{
-                            title: 'Pie Chart',
-                            pieHole: 0.4,
-                            height: chartSize,
-                            chartArea: {
-                                width: '100%'
-                            }
-                        }"
-                        />  
+                    <pie-chart :chartData="chartData" ></pie-chart>
                     <!-- <StyledPieChart
                         data={data} 
                         clickHandler={
@@ -49,7 +35,7 @@
 </template>
 
 <script>
-    import { GChart } from 'vue-google-charts';
+    import PieChart from '../components/dashboard/PieChart.vue';
 
     export default {
         data() {
@@ -58,21 +44,38 @@
             }
         },
         computed: {
-            budgets() {
-               return this.$store.state.user.categories.map(budget => ([budget.category, parseFloat(budget.amount)]))
+            chartData() {
+               const data = {
+                   datasets: [{
+                       backgroundColor: ['#276A73', '#4ABDAC', '#FC4A1A', '#F7B733', '#DEDCE3', '#98df8a', '#d62728', '#ff9896', '#9467bd'],
+                       data: [this.billsTotal, this.remainingAmount]
+                    }],
+                    labels: ['Bills', 'Remaining']
+               };
+
+               this.$store.state.user.categories.map(budget => {
+                   data.datasets[0].data.unshift(parseFloat(budget.amount));
+                   data.labels.unshift(budget.category);
+               });
+
+               return data;
             },
-            chartSize() {
-                if (window.innerWidth - 100 > 700) {
-                    return 350;
-                } else if (window.innerWidth - 100 > 200) {
-                    return (window.innerWidth - 100) / 2;
-                } else {
-                    return 100;
-                }
+            billsTotal() {
+                return this.$store.state.user.bills.reduce((total, currentBill) => {
+                    return total + parseFloat(currentBill.amount);
+                }, 0);
+            },
+            budgetsTotal() {
+                return this.$store.state.user.categories.reduce((total, currentCat) => {
+                    return total + parseFloat(currentCat.amount)
+                }, 0);
+            },
+            remainingAmount() {
+                return (this.$store.state.user.monthlySalary - this.billsTotal) - this.budgetsTotal;
             }
         },
         components: {
-            GChart
+            PieChart
         }
     }
 </script>
@@ -109,6 +112,5 @@
 
     .portfolio-data {
         width: 100%;
-        padding: 20px;
     }
 </style>
