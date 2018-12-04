@@ -26,7 +26,7 @@
                     {this.state.dataDisplay ? this.state.dataDisplay : 'Click on a segment to show the value'}
                 </GraphText> -->
             </section>
-            <section class="dash-card" style="min-width: 0;">
+            <section class="dash-card">
                 <h2>Budgets</h2>
                 <budget-module v-for="budget in budgets" :budget="budget" :key="budget.id"></budget-module>
             </section>
@@ -132,6 +132,7 @@
         background-color: white;
         border-radius: 5px;
         margin: 10px;
+        min-width: 350px;
     }
 
     h2 {
