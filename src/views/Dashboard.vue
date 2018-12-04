@@ -28,7 +28,7 @@
             </section>
             <section class="dash-card" style="min-width: 0;">
                 <h2>Budgets</h2>
-                <!-- {categories} -->
+                <budget-module v-for="budget in budgets" :budget="budget" :key="budget.id"></budget-module>
             </section>
         </article > 
     </div>
@@ -36,6 +36,7 @@
 
 <script>
     import PieChart from '../components/dashboard/PieChart.vue';
+    import BudgetModule from '../components/dashboard/BudgetModule.vue';
 
     export default {
         data() {
@@ -86,6 +87,9 @@
 
                return data;
             },
+            budgets() {
+                return this.$store.state.user.categories;
+            },
             billsTotal() {
                 return this.$store.state.user.bills.reduce((total, currentBill) => {
                     return total + parseFloat(currentBill.amount);
@@ -101,7 +105,8 @@
             }
         },
         components: {
-            PieChart
+            PieChart,
+            BudgetModule
         }
     }
 </script>

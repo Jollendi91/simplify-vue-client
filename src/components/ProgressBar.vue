@@ -1,7 +1,7 @@
 <template>
     <div class="progress-bar">
         <div class="bar-trail">
-            <p class="bar-text">${{ info.total.toFixed(2) }} of ${{ (info.remainingTotal).toFixed(2) }}</p>
+            <p class="bar-text">${{ info.spent.toFixed(2) }} of ${{ (info.total).toFixed(2) }}</p>
             <div class="bar-progress" :style="{width: progress + '%'}"></div>
         </div>
     </div>

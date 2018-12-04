@@ -4,8 +4,8 @@
         <div class="progress-container">
             <p class="amount-remaining">${{ remainingAmount.toFixed(2)}} Left</p>
             <progress-bar :progress="progress" :info="{
-                total: budgetsTotal,
-                remainingTotal: salary - billsTotal}"></progress-bar>
+                spent: budgetsTotal,
+                total: salary - billsTotal}"></progress-bar>
         </div>
         <category-form :max="remainingAmount.toFixed(2)"></category-form>
         <table>

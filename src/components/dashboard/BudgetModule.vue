@@ -1,24 +1,31 @@
 <template>
     <section class="budget-container">
         <div class="header-container">
-            <h3>{props.category}</h3>
-            <p>${(props.amount - currentTransactionsTotal).toFixed(2)} Left</p>
+            <h3>{{budget.category}}</h3>
+            <p>${{(parseFloat(budget.amount) - transTotal).toFixed(2)}} Left</p>
         </div>
-        <BudgetBar
-            progress={currentTransactionsTotal / props.amount}
-            text={`$${currentTransactionsTotal.toFixed()} of $${props.amount}`}
-            options={options}
-            initialAnimate={true}
-            containerStyle={containerStyle}
-            containerClassName={'.progressbar'}
-        />
+        <progress-bar :progress="progress" :info="{spent: transTotal, total: parseFloat(budget.amount)}"></progress-bar>
         <font-awesome-icon class="fa" icon="angle-right"></font-awesome-icon>
     </section>
 </template>
 
 <script>
     import ProgressBar from '../ProgressBar.vue';
+
     export default {
+        props:{
+            budget: Object
+        },
+        computed: {
+            transTotal() {
+                return this.budget.transactions.reduce((total, currentTrans) => {
+                    return total + parseFloat(currentTrans.amount)
+                }, 0);
+            },
+            progress() {
+                return parseFloat((this.transTotal / parseFloat(this.budget.amount) * 100).toFixed(2));
+            }
+        },
         components: {
             ProgressBar
         }
